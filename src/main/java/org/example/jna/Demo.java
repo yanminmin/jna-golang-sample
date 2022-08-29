@@ -83,7 +83,7 @@ public class Demo {
         for (int i = 0; i < 100; i++) {
             Thread thread = new TestThread(args[0], i);
             thread.start();
-            threadList.add(thread)
+            threadList.add(thread);
         }
         for (int i = 0; i < 100; i++) {
             threadList.get(i).join();
