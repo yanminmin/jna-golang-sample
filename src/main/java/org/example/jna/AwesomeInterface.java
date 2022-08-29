@@ -61,6 +61,13 @@ public interface AwesomeInterface extends Library {
      * @return 返回和入参一样的字符串
      */
     WString echoWString(GoString value);
+    /**
+     * 回显字符串
+     *
+     * @param value 字符串入参
+     * @return 返回和入参一样的字符串
+     */
+    WString ReturnByteSlice(GoString value);
 
     /**
      * 回显字符串
