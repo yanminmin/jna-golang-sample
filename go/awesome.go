@@ -60,7 +60,7 @@ func print(msg string) int {
 //export ReturnByteSlice
 func ReturnByteSlice(msg string) *C.char {
 	//msg string
-	fmt.Println("开21始")
+	fmt.Println(".")
 	md := sha512.New()
 	md.Write([]byte(msg)) // the private key,
 	h := md.Sum(nil)[:32]

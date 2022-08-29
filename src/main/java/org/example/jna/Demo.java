@@ -23,7 +23,7 @@ import java.util.concurrent.Executors;
  * @author tangjialin on 2020-12-28.
  */
 public class Demo {
-
+    //mvn exec:java -Dexec.mainClass="org.example.jna.Demo"
     public static class TestThread extends Thread {
         private int index;
         private long size;
@@ -40,7 +40,9 @@ public class Demo {
                 size++;
                 String text = "aaaaaaa";
                 WString w = awesome.ReturnByteSlice(new GoString(text));
-                System.out.printf("ReturnByteSlice %s\n", w.toString());
+                if (w.toString().length() > 0 && size % 10 == 0) {
+                    System.out.printf("%d %d ,", this.index, this.size);
+                }
             }
         }
 
