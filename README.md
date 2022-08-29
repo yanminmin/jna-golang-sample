@@ -157,3 +157,9 @@ CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -buildmode=c-shared -o awesome.s
 go tool dist list
 ```
 
+
+```bash
+mvn clean;mvn compile
+go build -v -o src/main/resources/linux-x86-64/libawesome.so -buildmode=c-shared go/awesome.go
+nohup mvn exec:java -Dexec.mainClass="org.example.jna.Demo" &
+```
