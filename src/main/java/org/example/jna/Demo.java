@@ -40,8 +40,8 @@ public class Demo {
                 size++;
                 String text = "aaaaaaa";
                 WString w = awesome.ReturnByteSlice(new GoString(text));
-                if (w.toString().length() > 0 && size % 10 == 0) {
-                    System.out.printf("%d %d ,", this.index, this.size);
+                if (w.toString().length() > 0 && size % 100 == 0) {
+                    System.out.printf("%d %d \n", this.index, this.size);
                 }
             }
         }
