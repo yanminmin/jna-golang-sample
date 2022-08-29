@@ -10,6 +10,8 @@ import org.example.utils.StdLib;
 
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -76,18 +78,16 @@ public class Demo {
         ExecutorService fixedThreadPool = Executors.newFixedThreadPool(500);
         System.out.println(property);
         long start = System.currentTimeMillis();
+        List<Thread> threadList = new ArrayList<>();
 
         for (int i = 0; i < 100; i++) {
             Thread thread = new TestThread(args[0], i);
             thread.start();
-
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            threadList.add(thread)
         }
-
+        for (int i = 0; i < 100; i++) {
+            threadList.get(i).join();
+        }
         long end = System.currentTimeMillis();
         System.out.println("子线程执行时长：" + (end - start));
 //        for (; true; ) {
