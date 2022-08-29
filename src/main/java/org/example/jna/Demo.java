@@ -26,18 +26,18 @@ import java.util.concurrent.Executors;
  */
 public class Demo {
     //mvn exec:java -Dexec.mainClass="org.example.jna.Demo"
+    final public static String NAME = "awesome";
+    final static private AwesomeInterface awesome = NativeProxy.load(NAME, AwesomeInterface.class);
+
     public static class TestThread extends Thread {
         private int index;
         private long size;
-        private String name;
 
-        public TestThread(String name, int index) {
+        public TestThread(int index) {
             this.index = index;
-            this.name = name;
         }
 
         public void run() {
-            AwesomeInterface awesome = NativeProxy.load(name, AwesomeInterface.class);
             for (; true; ) {
                 size++;
                 String text = "aaaaaaa";
@@ -51,11 +51,6 @@ public class Demo {
     }
 
     public static void main(String[] args) throws Exception {
-        if (args == null || args.length <= 0) {
-            args = new String[]{"awesome"};
-        }
-        AwesomeInterface awesome = NativeProxy.load(args[0], AwesomeInterface.class);
-
 //        System.out.printf("awesome.add(12, 99) = %s\n", awesome.add(12, 99));
 //        System.out.printf("awesome.cosine(1.0) = %s\n", awesome.cosine(1.0));
 //
@@ -81,7 +76,7 @@ public class Demo {
         List<Thread> threadList = new ArrayList<>();
 
         for (int i = 0; i < 100; i++) {
-            Thread thread = new TestThread(args[0], i);
+            Thread thread = new TestThread(i);
             thread.start();
             threadList.add(thread);
         }

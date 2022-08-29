@@ -65,7 +65,7 @@ go build -buildmode=c-shared -o awesome.dll awesome.go
 go build -buildmode=c-shared -o awesome.so awesome.go
 
 # 编译 mac 版本
-go build -buildmode=c-shared -o libawesome.dylib awesome.go
+go build -buildmode=c-shared -o src/main/resources/darwin/libawesome.dylib go/awesome.go
 ```
 
 ### 交叉编译
